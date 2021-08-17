@@ -8,6 +8,9 @@
     let empresas = []
     let descripcionConsultorio = ''
     let empresaConsultorio = ''
+    $axios.defaults.headers.common = {
+        Authorization: $session.authorizationHeader.Authorization
+    };
     onMount(()=>{
         cargarConsultorios()
         cargarEmpresas()
@@ -17,7 +20,6 @@
         $axios.get('/consultorios')
         .then(res => {
             consultorios = res.data
-            console.log(consultorios)
         })
     }
 
@@ -25,7 +27,6 @@
         $axios.get('/empresas')
         .then(res => {
             empresas = res.data
-            console.log(empresas)
         })
     }
 

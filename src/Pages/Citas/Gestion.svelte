@@ -69,8 +69,6 @@
   }
 
   function cambiarEstado(idCita, estado){
-    console.log(estado)
-    console.log(idCita)
     switch (estado) {
       case 'eliminar':
       Swal.fire({
@@ -86,7 +84,6 @@
           if (result.isConfirmed) {
             $axios.put(`/citas/${idCita}/establecerEstado`, {estadoId: 'X'})
             .then(res => {
-              console.log(res.data)
               cargarCitas()
               Swal.fire(
                 'Cancelada!',
@@ -133,14 +130,12 @@
         fechaFin: fechaFin,
         estadoId: sltEstado
       }
-      console.log(filtro)
     let filtrado = filtroObjeto(filtro)
     let qs = new URLSearchParams(filtrado).toString()
     setTimeout(() => {
       $axios.get("citas?" + qs)
       .then(res => {
         citas = res.data;
-        console.log(citas)
       })
       .catch(err => {
         console.error(err);

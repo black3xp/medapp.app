@@ -41,8 +41,8 @@
         </a>
       </li>
       <!--list item ends-->
-      <li class="menu-item" use:active={'/Asistente/CitasProgramadas'}>
-        <a href="/Asistente/CitasProgramadas" use:link class="menu-link">
+      <li class="menu-item" use:active={'/citas/gestion'}>
+        <a href="/citas/gestion" use:link class="menu-link">
           <span class="menu-label">
             <span class="menu-name">Citas programadas</span>
           </span>
@@ -70,7 +70,7 @@
       <!--list item begins-->
       <li
         class="menu-item " use:active={'/Usuario/*'} 
-        class:d-none={!user.isAny(['admin'])}>
+        class:d-none={false}>
         <a href="#!" class="open-dropdown menu-link">
           <span class="menu-label">
             <span class="menu-name">
@@ -95,8 +95,8 @@
               </span>
             </a>
           </li>
-          <li class="menu-item" use:active={'/Mantenimiento/Consultorios'}>
-            <a href="/Mantenimiento/Consultorios" use:link class=" menu-link">
+          <li class="menu-item" use:active={'/mantenimiento/consultorios'}>
+            <a href="/mantenimiento/consultorios" use:link class=" menu-link">
               <span class="menu-label">
                 <span class="menu-name">Consultorios</span>
               </span>

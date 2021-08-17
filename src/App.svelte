@@ -7,9 +7,7 @@
   import { onMount } from "svelte";
 
   onMount(() => {
-    if ($session.isValid) {
-      $connection.start().catch(e => console.error(e));
-    }
+
   });
 
   function event(e) {
@@ -19,14 +17,4 @@
 
 <Router
   on:routeLoaded={event}
-  on:conditionsFailed={(e) => {
-    if (e.detail.userData == 'r') {
-      push('/Home/Unauthorized')
-    }
-    else if (e.detail.userData == 'i') {
-      push('/')
-    } else {
-      push('/Home/Login');
-    }
-  }}
   {routes} />

@@ -6,7 +6,7 @@
     import { push, link } from "svelte-spa-router";
     export let params = [];
     $axios.defaults.headers.common = {
-        Authorization: $session.authorizationHeader.Authorization
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`
     };
     let horaFin = [];
     let horaInicio = [];
@@ -29,7 +29,7 @@
     let sltAsistente = ""
     onMount(() => {
         cargarHorario()
-        cargarCitas()
+        // cargarCitas()
         cargarAsistentes()
         cargarUsuarios()
     });
@@ -51,7 +51,6 @@
         $axios.get(`consultorios/${params.idConsultorio}/usuarios`)
         .then(res => {
             asistentes = res.data
-            console.log(asistentes)
         })
     }
 
@@ -87,20 +86,19 @@
         $axios.get(`/horarios?consultorioId=${params.idConsultorio}`)
         .then(res => {
             horarios = res.data
-            console.table(res.data)
             if(horarios.length !== 0) {
                 nombreConsultorio = horarios[0].consultorio
             }
         })
     }
 
-    function cargarCitas() {
-        $axios.get(`/citas?consultorioId=${params.idConsultorio}`)
-        .then(res => {
-            citas = res.data
-            console.log(citas)
-        })
-    }
+    // function cargarCitas() {
+    //     $axios.get(`/citas?consultorioId=${params.idConsultorio}`)
+    //     .then(res => {
+    //         citas = res.data
+    //         console.log(citas)
+    //     })
+    // }
 
     function convertirHora (time) {
         time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
@@ -137,7 +135,7 @@
                             <p class="text-muted text-center" style="margin-bottom: 0px;"></p>
                             <p class="text-muted text-center" style="margin-bottom: 0px;"></p>
                             <p class="text-muted text-center"></p>
-                            <div class="row text-center p-b-10">
+                            <!-- <div class="row text-center p-b-10">
                                 <div class="col"><a href="#!">
                                         <h3 class="mdi mdi-timetable"></h3>
                                         <div class="text-overline">Horario</div>
@@ -146,7 +144,7 @@
                                         <h3 class="mdi mdi-account-edit"></h3>
                                         <div class="text-overline">Editar Perfil</div>
                                     </a></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -193,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-                <h5 class="card-header col-lg-12">
+                <!-- <h5 class="card-header col-lg-12">
                     Citas
                 </h5>
                 <div class="col-lg-12">
@@ -211,7 +209,6 @@
                             </thead>
                             <tbody>
                                 {#each citas as cita}
-                                    <!-- content here -->
                                     <tr class:bg-soft-danger={cita.estado == 'Cancelada / Renegada'}>
                                         <td>
                                             <div class="avatar avatar-sm mr-2 d-block-sm">
@@ -231,8 +228,9 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> -->
 
+                
                 <div class="col-lg-6 mt-4">
                     <div class="card mb-4">
                         <h5 class="card-header">
@@ -275,7 +273,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>

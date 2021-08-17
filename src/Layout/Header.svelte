@@ -1,17 +1,14 @@
 <script>
-  import { session, connection } from '../store.js';
   import { push } from 'svelte-spa-router'
   import jwt from "jwt-decode";
   
-  let name = '';
   jQuery('.modal-backdrop').hide();
 
-  const logOut = function () {
-    $session.clear();
-    $session.invalidate();
-    $connection.stop();
-
-    push('/Home/Login');
+  const logOut = () => {
+    localStorage.removeItem('access_token')
+    if(!localStorage.getItem('access_token')){
+      push('/home/login')
+    }
   }
 
 </script>
@@ -109,7 +106,7 @@
           aria-haspopup="true"
           aria-expanded="false">
           <div class="avatar avatar-sm avatar-online">
-            <span class="avatar-title rounded-circle bg-dark">{user.userName[0]}</span>
+            <span class="avatar-title rounded-circle bg-dark">V</span>
 
           </div>
         </a>
