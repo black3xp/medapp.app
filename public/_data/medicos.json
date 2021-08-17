@@ -1,0 +1,212 @@
+[
+    {
+      "id": 1,
+      "nombre": "DR. FREDDY",
+      "apellidos": "ALVAREZ",
+      "telefono": "809-390-8141",
+      "especialidad": "Alergología"
+    },
+    {
+      "id": 2,
+      "nombre": "DRA. YOSELYN",
+      "apellidos": "LORENZO",
+      "telefono": "809-873-5353",
+      "especialidad": "Anestesiología"
+    },
+    {
+      "id": 3,
+      "nombre": "DRA. LOURDES",
+      "apellidos": "RIVAS",
+      "telefono": "809-545-1839",
+      "especialidad": "Cardiología"
+    },
+    {
+      "id": 4,
+      "nombre": "DRA. REBECA",
+      "apellidos": "MENA",
+      "telefono": "809-451-6573",
+      "especialidad": "Gastroenterología"
+    },
+    {
+      "id": 5,
+      "nombre": "DR. RAMON",
+      "apellidos": "MENA",
+      "telefono": "809-481-1059",
+      "especialidad": "Endocrinología"
+    },
+    {
+      "id": 6,
+      "nombre": "DR. FEDERICO",
+      "apellidos": "CAMPOS GUZMAN",
+      "telefono": "809-848-4733",
+      "especialidad": "Epidemiología"
+    },
+    {
+      "id": 7,
+      "nombre": "DRA. SARAH",
+      "apellidos": "CELADO",
+      "telefono": "809-390-8142",
+      "especialidad": "Geriatría"
+    },
+    {
+      "id": 8,
+      "nombre": "DRA. NURYS",
+      "apellidos": "SANCHEZ",
+      "telefono": "-   -",
+      "especialidad": "Hepatología"
+    },
+    {
+      "id": 9,
+      "nombre": "DR. JORGE",
+      "apellidos": "VASQUEZ SIMO",
+      "telefono": "809-757-6640",
+      "especialidad": "Hematología"
+    },
+    {
+      "id": 10,
+      "nombre": "DR. FRANCISCO J.",
+      "apellidos": "UREÑA YUNQUE",
+      "telefono": "809-816-0228",
+      "especialidad": "Infectología"
+    },
+    {
+      "id": 11,
+      "nombre": "DRA. ISABEL",
+      "apellidos": "RAMIREZ ORTEGA",
+      "telefono": "809-224-4230",
+      "especialidad": "Medicina aeroespacial"
+    },
+    {
+      "id": 12,
+      "nombre": "DRA. JUANA",
+      "apellidos": "CAMACHO MINAYA",
+      "telefono": "809-771-3882",
+      "especialidad": "Medicina del deporte"
+    },
+    {
+      "id": 13,
+      "nombre": "DR. TEOMARTAGO",
+      "apellidos": "VARGAS",
+      "telefono": "809-430-2956",
+      "especialidad": "Medicina del trabajo"
+    },
+    {
+      "id": 14,
+      "nombre": "DRA. DANIA",
+      "apellidos": "CASTELLANOS",
+      "telefono": "809-710-5102",
+      "especialidad": "Medicina de urgencias"
+    },
+    {
+      "id": 15,
+      "nombre": "DRA. HOANY",
+      "apellidos": "PEREZ",
+      "telefono": "809-399-9193",
+      "especialidad": "Medicina familiar y comunitaria"
+    },
+    {
+      "id": 16,
+      "nombre": "DRA. MILAGROS",
+      "apellidos": "GARCIA",
+      "telefono": "809-696-7783",
+      "especialidad": "Medicina física y rehabilitación"
+    },
+    {
+      "id": 17,
+      "nombre": "DRA. MARLY",
+      "apellidos": "NUÑEZ",
+      "telefono": "809-330-1512",
+      "especialidad": "Medicina intensiva"
+    },
+    {
+      "id": 18,
+      "nombre": "DRA. VIRKATIS",
+      "apellidos": "PEREZ ROCHA",
+      "telefono": "809-861-0463",
+      "especialidad": "Medicina interna"
+    },
+    {
+      "id": 19,
+      "nombre": "DRA. ZOILA",
+      "apellidos": "HENRIQUEZ",
+      "telefono": "809-817-4850",
+      "especialidad": "Medicina forense"
+    },
+    {
+      "id": 20,
+      "nombre": "DR. JUAN",
+      "apellidos": "ROSARIO",
+      "telefono": "809-710-3314",
+      "especialidad": "Medicina preventiva y salud pública"
+    },
+    {
+      "id": 21,
+      "nombre": "DRA. MARIA DEL CARMEN",
+      "apellidos": "RAMIREZ MALDONADO",
+      "telefono": "809-816-8668",
+      "especialidad": "Nefrología"
+    },
+    {
+      "id": 22,
+      "nombre": "DR. TEOFILO",
+      "apellidos": "PEREZ",
+      "telefono": "809-696-1570",
+      "especialidad": "Neumología"
+    },
+    {
+      "id": 23,
+      "nombre": "DR. BERNABE",
+      "apellidos": "POLANCO",
+      "telefono": "809-223-1349",
+      "especialidad": "Neurología"
+    },
+    {
+      "id": 24,
+      "nombre": "DR. LUCIANO",
+      "apellidos": "JAVIER",
+      "telefono": "809-853-5468",
+      "especialidad": "Nutriología"
+    },
+    {
+      "id": 25,
+      "nombre": "DR. DARIO",
+      "apellidos": "LAZALA NUÑEZ",
+      "telefono": "809-753-2190",
+      "especialidad": "Oncología médica"
+    },
+    {
+      "id": 26,
+      "nombre": "DR. CARLOS",
+      "apellidos": "ALVAREZ",
+      "telefono": "809-481-6194",
+      "especialidad": "Oncología radioterápica"
+    },
+    {
+      "id": 27,
+      "nombre": "DR. ERIC",
+      "apellidos": "OLIVERO",
+      "telefono": "809-816-8595",
+      "especialidad": "Pediatría"
+    },
+    {
+      "id": 28,
+      "nombre": "DR. NELSON",
+      "apellidos": "ROSARIO",
+      "telefono": "809-729-4654",
+      "especialidad": "Psiquiatría"
+    },
+    {
+      "id": 29,
+      "nombre": "DR. ZOILO",
+      "apellidos": "NUÑEZ GIL",
+      "telefono": "809-757-0913",
+      "especialidad": "Reumatología"
+    },
+    {
+      "id": 30,
+      "nombre": "DR. JUAN E.",
+      "apellidos": "FAXAS",
+      "telefono": "809-847-0706",
+      "especialidad": "Toxicología"
+    }
+  ]

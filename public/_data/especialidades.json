@@ -1,0 +1,121 @@
+[{
+        "id": 1,
+        "nombre": "Alergología"
+    },
+    {
+        "id": 2,
+        "nombre": "Anestesiología"
+    },
+    {
+        "id": 3,
+        "nombre": "Cardiología"
+    },
+    {
+        "id": 4,
+        "nombre": "Gastroenterología"
+    },
+    {
+        "id": 5,
+        "nombre": "Endocrinología"
+    },
+    {
+        "id": 6,
+        "nombre": "Epidemiología"
+    },
+    {
+        "id": 7,
+        "nombre": "Geriatría"
+    },
+    {
+        "id": 8,
+        "nombre": "Hepatología"
+    },
+    {
+        "id": 9,
+        "nombre": "Hematología"
+    },
+    {
+        "id": 10,
+        "nombre": "Infectología"
+    },
+    {
+        "id": 11,
+        "nombre": "Medicina aeroespacial"
+    },
+    {
+        "id": 12,
+        "nombre": "Medicina del deporte"
+    },
+    {
+        "id": 13,
+        "nombre": "Medicina del trabajo"
+    },
+    {
+        "id": 14,
+        "nombre": "Medicina de urgencias"
+    },
+    {
+        "id": 15,
+        "nombre": "Medicina familiar y comunitaria"
+    },
+    {
+        "id": 16,
+        "nombre": "Medicina física y rehabilitación"
+    },
+    {
+        "id": 17,
+        "nombre": "Medicina intensiva"
+    },
+    {
+        "id": 18,
+        "nombre": "Medicina interna"
+    },
+    {
+        "id": 19,
+        "nombre": "Medicina forense"
+    },
+    {
+        "id": 20,
+        "nombre": "Medicina preventiva y salud pública"
+    },
+    {
+        "id": 21,
+        "nombre": "Nefrología"
+    },
+    {
+        "id": 22,
+        "nombre": "Neumología"
+    },
+    {
+        "id": 23,
+        "nombre": "Neurología"
+    },
+    {
+        "id": 24,
+        "nombre": "Nutriología"
+    },
+    {
+        "id": 25,
+        "nombre": "Oncología médica"
+    },
+    {
+        "id": 26,
+        "nombre": "Oncología radioterápica"
+    },
+    {
+        "id": 27,
+        "nombre": "Pediatría"
+    },
+    {
+        "id": 28,
+        "nombre": "Psiquiatría"
+    },
+    {
+        "id": 29,
+        "nombre": "Reumatología"
+    },
+    {
+        "id": 30,
+        "nombre": "Toxicología"
+    }
+]

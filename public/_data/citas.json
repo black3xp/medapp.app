@@ -1,0 +1,50 @@
+[{
+        "id": 1,
+        "nombreMedico": "DRA. YOSELYN LORENZO",
+        "nombrePaciente": "JIMENA LAGO",
+        "medicoId": 2,
+        "observaciones": "lorem ipsum dolor odio",
+        "nombreEstado": "Pendiente",
+        "codigoEstado": "P"
+    },
+    {
+        "id": 2,
+        "pacienteId": 2,
+        "nombreMedico": "DRA. LOURDES RIVAS",
+        "nombrePaciente": "JOAQUN LOPEZ",
+        "medicoId": 3,
+        "observaciones": "lorem ipsum dolor odio",
+        "nombreEstado": "Pendiente",
+        "codigoEstado": "P"
+    },
+    {
+        "id": 3,
+        "pacienteId": 5,
+        "nombreMedico": "DRA. REBECA MENA",
+        "nombrePaciente": "MANUEL FERRARA",
+        "medicoId": 4,
+        "observaciones": "lorem ipsum dolor odio",
+        "nombreEstado": "Pendiente",
+        "codigoEstado": "P"
+    },
+    {
+        "id": 4,
+        "pacienteId": 7,
+        "nombreMedico": "DRA. LOURDES RIVAS",
+        "nombrePaciente": "XIMENA DUQUE",
+        "medicoId": 3,
+        "observaciones": "lorem ipsum dolor odio",
+        "nombreEstado": "Pendiente",
+        "codigoEstado": "P"
+    },
+    {
+        "id": 5,
+        "pacienteId": 8,
+        "nombreMedico": "DRA. NURYS SANCHEZ",
+        "nombrePaciente": "JASMINE JAMES",
+        "medicoId": 8,
+        "observaciones": "lorem ipsum dolor odio",
+        "nombreEstado": "Finalizada",
+        "codigoEstado": "F"
+    }
+]
