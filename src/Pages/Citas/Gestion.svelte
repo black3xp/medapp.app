@@ -17,7 +17,8 @@
   let detallesCita = []
   let pacienteModal = []
   let consultorios = []
-  let sltConsultorios = ""
+  let sltConsultorios = "";
+  let cargando = false;
 
   $axios.defaults.headers.common = {
         Authorization: $session.authorizationHeader.Authorization
@@ -56,6 +57,9 @@
     }
     if (code == 'Cancelada / Renegada') {
       return 'badge-danger';
+    }
+    if (code == 'Confirmada') {
+      return 'badge-primary';
     }
   }
 
@@ -96,6 +100,28 @@
           
         break;
       case 'confirmar':
+      Swal.fire({
+          title: 'Estas seguro?',
+          text: "Deseas confirmar la cita!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si!',
+          cancelButtonText: 'No'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $axios.put(`/citas/${idCita}/establecerEstado`, {estadoId: 'C'})
+            .then(res => {
+              cargarCitas()
+              Swal.fire(
+                'Confirmada!',
+                'Se ha realizado la cita',
+                'success'
+              )
+            })
+          }
+        })
 
         break;
     
@@ -122,6 +148,7 @@
 
 
   function cargarCitas() {
+    cargando = true;
     let filtro = {
         consultorioId: sltConsultorios,
         paciente: buscarPaciente,
@@ -136,8 +163,12 @@
       $axios.get("citas?" + qs)
       .then(res => {
         citas = res.data;
+        if(res.data){
+          cargando = false;
+        }
       })
       .catch(err => {
+        cargando = false;
         console.error(err);
         $errorConexion()
       });
@@ -151,9 +182,25 @@
 </script>
 
 <style>
+  @media print{
+    button, a, input,.admin-header, label{
+      display: none;
+    }
+    .alert, .alert-primary{
+      border: none;
+      padding: none;
+    }
+    .badge{
+      border: none;
+    }
+  }
   .modal-slide-right {
     top: 0;
     bottom: 0;
+  }
+
+  .titulo{
+    font-size: 1.5rem;
   }
 
   .modal-slide-right .modal-dialog {
@@ -167,6 +214,69 @@
     top: 0;
     overflow: auto;
   }
+  /*This would all go into the global.css file*/
+	[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+	transition: .2s ease-out;
+	transform: translate(-50%, 5px)
+}
+
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 5px;
+  padding: 7px;
+	width: 100%;
+  min-width: 70px;
+	max-width: 250px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+	transition: .2s ease-out
+}
+
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  opacity: 1;
+	transform: translate(-50%, 0)
+}
+[data-tooltip=false]:hover:before,
+[data-tooltip=false]:hover:after {
+  visibility: hidden;
+  opacity: 0;
+}
 </style>
 
 <Aside />
@@ -177,12 +287,11 @@
     <div class="container mt-3">
       <div class="col-md-12">
         <div class="row">
-
           <div class="col-lg-4 mt-2">
             <label>Buscar por paciente</label>
             <input type="text" class="form-control" bind:value={buscarPaciente} on:input={cargarCitas} placeholder="Buscar paciente">
           </div>
-
+          
           <div class="col-lg-3 col-md-3 mt-2">
             <label>Desde</label>
             <input type="date" class="form-control" bind:value={fechaInicio} on:input={cargarCitas}>
@@ -194,32 +303,36 @@
           
           <div class="col-lg-2">
             <button class="btn btn-primary" id="btnFiltro" on:click={btnFiltro} style="margin-top: 38px;">Filtros</button>
+            <a class="btn btn-primary" target="_blank" style="margin-top: 38px;" href={`https://medapp.nxt-pro.com/solicitud/cita/${sltConsultorios}`}><i class="mdi mdi-plus"></i> Cita</a>
           </div>
           <div id="filtroAvanzado" class="col-lg-12 mt-2" style="display: none;">
-              <div class="alert alert-secondary">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <label>Especialista</label>
-                    <select class="form-control" id="sltMedicos" bind:value={sltConsultorios} on:change={cargarCitas} style="width: 100%">
-                        {#each consultorios as consultorio}
-                           <!-- content here -->
-                           <option value={consultorio.consultorioId}>{consultorio.consultorio}</option>
-                        {/each}
-                    </select>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <label>Estados</label>
-                    <select class="form-control" bind:value={sltEstado} on:change={cargarCitas}>
-                      <option value="" disabled selected>- Buscar por estado -</option>
-                      <option value={""}>Todos</option>
-                        {#each estados as estado}
-                           <!-- content here -->
-                           <option value={estado.id}>{estado.descripcion}</option>
-                        {/each}
-                    </select>
-                  </div>
+            <div class="alert alert-secondary">
+              <div class="row">
+                <div class="col-lg-4">
+                  <label>Especialista</label>
+                  <select class="form-control" id="sltMedicos" bind:value={sltConsultorios} on:change={cargarCitas} style="width: 100%">
+                    {#each consultorios as consultorio}
+                    <!-- content here -->
+                    <option value={consultorio.consultorioId}>{consultorio.consultorio}</option>
+                    {/each}
+                  </select>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <label>Estados</label>
+                  <select class="form-control" bind:value={sltEstado} on:change={cargarCitas}>
+                    <option value="" disabled selected>- Buscar por estado -</option>
+                    <option value={""}>Todos</option>
+                    {#each estados as estado}
+                    <!-- content here -->
+                    <option value={estado.id}>{estado.descripcion}</option>
+                    {/each}
+                  </select>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-12 mt-2">
+            <h1 class="titulo" style="color: black;">Listado de Citas</h1>
           </div>
 
           <div class="col-md-12 mt-3">
@@ -228,6 +341,9 @@
                    <!-- content here -->
                    <h4 >No hay cita</h4>
                 {/if}
+                <div class="col-lg-12 text-right">
+                  <button class="btn btn-success btn-sm" on:click={() => window.print()}>Imprimir</button>
+                </div>
 
               <div class="table-responsive">
                 {#if citas}
@@ -235,6 +351,7 @@
                    <table class="table align-td-middle table-card">
                      <thead>
                        <tr>
+                         <th>#</th>
                          <th>Nombre</th>
                          <th>Estado</th>
                          <th>Fecha</th>
@@ -244,9 +361,10 @@
                        </tr>
                      </thead>
                      <tbody>
-                       {#each citas as cita}
+                       {#each citas as cita, i}
                           <!-- content here -->
                           <tr class="cursor-table">
+                            <td>{i+1}</td>
                             <td>{cita.nombre} {cita.apellidos}</td>
                             <td>
                               <span class="badge {colorEstado(cita.estado)}">{cita.estado}</span>
@@ -257,7 +375,7 @@
                             <td />
                             <td style="text-align: right;">
                               <button
-                                class="btn btn-success btn-sm mb-1"
+                                class="btn btn-primary btn-sm mb-1"
                                 data-toggle="modal"
                                 data-target="#modalPaciente" 
                                 on:click={() => editarPaciente(cita.id)}>
@@ -279,13 +397,17 @@
                                 <i class="mdi mdi-close"></i>
                               </button>
                               {/if}
+                              {#if cita.estadoId !== "C"}
+                                 <button
+                                   class="btn btn-success btn-sm mb-1"
+                                   title="Confirmar"
+                                   on:click={() => cambiarEstado(cita.id, 'confirmar')}>
+                                   <i class="mdi mdi-check-outline"></i>
+                                 </button>
+                              {/if}
   
                             </td>
                           </tr>
-                          {:else}
-                          <div class="col-12">
-                            No hay resultados
-                          </div>
                        {/each}
  
                      </tbody>
@@ -293,6 +415,13 @@
                 {/if}
 
               </div>
+              {#if cargando}
+                <div class="col-lg-12 text-center">
+                  <div class="spinner-border text-secondary" role="status">
+                      <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              {/if}
             </div>
           </div>
 
