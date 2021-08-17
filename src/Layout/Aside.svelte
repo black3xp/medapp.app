@@ -1,10 +1,6 @@
 <script>
   import { link } from "svelte-spa-router";
   import active from 'svelte-spa-router/active'
-  import { activePage, session } from "../store.js";
-  import { UserManager } from "../util.js";
-
-  let user = new UserManager($session.authorizationHeader.Authorization);
 </script>
 
 <aside class="admin-sidebar">

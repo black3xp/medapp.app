@@ -1,13 +1,10 @@
 <script>
   import Aside from "../../Layout/Aside.svelte";
   import Header from "../../Layout/Header.svelte";
-  import { activePage, session } from "../../store.js";
   import { onDestroy } from "svelte";
+
   import { push } from "svelte-spa-router";
-  $activePage = "home.index";
-  onDestroy(() => {
-    $activePage = "";
-  });
+
 </script>
 
 <Aside />

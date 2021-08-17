@@ -1,9 +1,8 @@
 <script>
-  import { host, session, connection, axios } from "../../store";
   import { push } from "svelte-spa-router";
-  import { Session, login } from "svelte-session-manager"
-  import { HubConnectionState } from '@microsoft/signalr'
+  import {url} from '../../util';
   import Swal from 'sweetalert2';
+  import { axios } from "axios";
 
   let loginFail = false;
   let username = "";
@@ -15,31 +14,38 @@
   const iniciar = function() {
     cargando = true;
     loginFail = false;
-    let _session = new Session(localStorage);
 
-    login(_session, $host + "/Users/LogIn", username, password)
-      .then(x => {
-        if (x) {
-          loginFail = true;
-          cargando = false;
-        } else {
-          $session = _session;
-          cargando = false;
-          if ($session.isValid) {
-            if ($connection.state === HubConnectionState.Disconnected) {
-              $connection.start().catch(e => console.error(e))
-            }
-            push("/");
-          }
-        }
-      }).catch(e => {
-        cargando = false;
-        Swal.fire({
-          title: 'Error de conexion',
-          text: 'Hubo un problema al conectar al servidor!',
-          icon: 'error'
-        });
-      }) 
+    const data = {
+      username,
+      password,
+    }
+
+    const config = {
+      method: 'post',
+      url: `${url}/Users/LogIn`,
+      data,
+    }
+
+    axios(config)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err =>{
+        console.error(err)
+      })
+
+    // login(_session, url + "/Users/LogIn", username, password)
+    //   .then(x => {
+    //     console.log(x)
+    //   }).catch(e => {
+    //     loginFail = true;
+    //     cargando = false;
+    //     Swal.fire({
+    //       title: 'Error de conexion',
+    //       text: 'Hubo un problema al conectar al servidor!',
+    //       icon: 'error'
+    //     });
+    //   }) 
   }
 </script>
 

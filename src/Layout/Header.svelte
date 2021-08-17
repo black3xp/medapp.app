@@ -2,10 +2,6 @@
   import { session, connection } from '../store.js';
   import { push } from 'svelte-spa-router'
   import jwt from "jwt-decode";
-  import { UserManager } from "../util.js";
-
-  let user = {};
-  user = new UserManager($session.authorizationHeader.Authorization)
   
   let name = '';
   jQuery('.modal-backdrop').hide();
